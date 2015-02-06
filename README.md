@@ -1,3 +1,16 @@
+Fork Notice:
+============
+This fork also adds the mongodb server. It's not running (because it's just a container) but [MongoFaker]( https://github.com/reactivecore/mongofaker) can use the executable to spin up a MongoDB instance during tests of Play  Applications.
+
+Startup Call:
+```
+docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 90
+90:9090 nob13/teamcity_agent:latest
+```
+
+Thanks to Sjoerd Mulder for the original version.
+
+
 Teamcity build agent
 ========================
 
