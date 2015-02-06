@@ -40,4 +40,8 @@ RUN apt-get install -y ruby2.1 ruby2.1-dev ruby ruby-switch build-essential
 RUN ruby-switch --set ruby2.1
 RUN gem install rake bundler compass --no-ri --no-rdoc
 
+# Install MongoDB Server
+RUN apt-get install -y mongodb-server
+
+
 ADD service /etc/service
