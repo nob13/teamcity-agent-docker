@@ -40,8 +40,17 @@ RUN apt-get install -y ruby2.1 ruby2.1-dev ruby ruby-switch build-essential
 RUN ruby-switch --set ruby2.1
 RUN gem install rake bundler compass --no-ri --no-rdoc
 
-# Install MongoDB Server
+# Install MongoDB Server (it will not run, but executable will be there)
 RUN apt-get install -y mongodb-server
+
+# Install PhantomJS (See: https://gist.github.com/julionc/7476620) 
+RUN apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev
+ENV PHANTOM_JS="phantomjs-1.9.7-linux-x86_64"
+RUN wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
+RUN mv $PHANTOM_JS.tar.bz2 /usr/local/share/; cd /usr/local/share/; tar xvjf $PHANTOM_JS.tar.bz2
+RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs
+RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
+
 
 
 ADD service /etc/service
