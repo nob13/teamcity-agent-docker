@@ -4,7 +4,7 @@ This fork also adds the mongodb server. It's not running (because it's just a co
 
 Startup Call:
 ```
-docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 9090:9090 nob13/teamcity_agent:latest
+docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 9090:9090 nob13/teamcity-agent-docker:latest
 ```
 
 Thanks to Sjoerd Mulder for the original version.
