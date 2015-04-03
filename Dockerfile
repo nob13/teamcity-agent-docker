@@ -43,6 +43,9 @@ RUN gem install rake bundler compass --no-ri --no-rdoc
 # Install MongoDB Server (it will not run, but executable will be there)
 RUN apt-get install -y mongodb-server
 
+# Add Reactive Core CA
+RUN curl https://www.reactivecore.de/files/reactivecore.ca.crt > /usr/local/share/ca-certificates/reactivecore.ca.crt && update-ca-certificates
+
 # Install PhantomJS (See: https://gist.github.com/julionc/7476620) 
 RUN apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev
 ENV PHANTOM_JS="phantomjs-1.9.7-linux-x86_64"
