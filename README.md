@@ -1,10 +1,14 @@
 Fork Notice:
 ============
-This fork also adds the mongodb server. It's not running (because it's just a container) but [MongoFaker]( https://github.com/reactivecore/mongofaker) can use the executable to spin up a MongoDB instance during tests of Play  Applications.
+This fork is for internal use. It adds the CA Key of [ReactiveCore](https://www.reactivecore.de) to the CA list, don't trust it!
 
-Startup Call:
+Other changes
+
+* Added MongoDB and [MongoFaker]( https://github.com/reactivecore/mongofaker)
+* Added PhantomJS
+
 ```
-docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 9090:9090 nob13/teamcity_agent:latest
+docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 9090:9090 nob13/teamcity-agent-docker:latest
 ```
 
 Thanks to Sjoerd Mulder for the original version.
