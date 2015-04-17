@@ -11,7 +11,7 @@ RUN apt-get install -y unzip iptables lxc build-essential fontconfig
 
 ENV LANG       en_US.UTF-8
 ENV LC_ALL     en_US.UTF-8
-ENV AGENT_DIR  /data/agent
+ENV AGENT_DIR  /opt/buildAgent
 
 # Check install and environment
 ADD 00_checkinstall.sh /etc/my_init.d/00_checkinstall.sh
