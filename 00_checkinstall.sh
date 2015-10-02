@@ -4,8 +4,8 @@ if [ -z "$TEAMCITY_SERVER" ]; then
     exit 1
 fi
 
-if [ ! -d "$AGENT_DIR" ]; then
-    echo "$AGENT_DIR doesn't exist pulling build-agent from server $TEAMCITY_SERVER";
+if [ ! -f "$AGENT_DIR/installed" ]; then
+    echo "$AGENT_DIR/installed doesn't exist pulling build-agent from server $TEAMCITY_SERVER";
     wget $TEAMCITY_SERVER/update/buildAgent.zip
     unzip -d $AGENT_DIR buildAgent.zip
     rm buildAgent.zip
@@ -14,4 +14,5 @@ if [ ! -d "$AGENT_DIR" ]; then
     echo "workDir=/data/work" >> $AGENT_DIR/conf/buildAgent.properties
     echo "tempDir=/data/temp" >> $AGENT_DIR/conf/buildAgent.properties
     echo "systemDir=../system" >> $AGENT_DIR/conf/buildAgent.properties
+    touch $AGENT_DIR/installed
 fi

@@ -25,6 +25,7 @@ EXPOSE 9090
 
 VOLUME /var/lib/docker
 VOLUME /data
+VOLUME /opt/buildAgent
 
 # Install ruby and node.js build repositories
 RUN apt-add-repository ppa:chris-lea/node.js

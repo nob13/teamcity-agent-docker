@@ -4,8 +4,9 @@ This fork is for internal use. It adds the CA Key of [ReactiveCore](https://www.
 
 Other changes
 
-* Added MongoDB and [MongoFaker]( https://github.com/reactivecore/mongofaker)
+* Added MongoDB for [MongoFaker]( https://github.com/reactivecore/mongofaker)
 * Added PhantomJS
+* Exposed `/opt/buildAgent` because settings are stored there and restart will be much faster
 
 ```
 docker run -d --name teamcity_agent --privileged -e TEAMCITY_SERVER=http://teamcity.lan:8111 -p 9090:9090 nob13/teamcity-agent-docker:latest
