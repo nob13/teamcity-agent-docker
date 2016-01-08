@@ -76,10 +76,6 @@ RUN mv $PHANTOM_JS.tar.bz2 /usr/local/share/; cd /usr/local/share/; tar xvjf $PH
 RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs
 RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
 
-
-
-ADD service /etc/service
-
 # Install the magic wrapper.
 ADD wrapdocker /usr/local/bin/wrapdocker
 
