@@ -60,22 +60,22 @@ RUN npm install -g bower grunt-cli
 RUN gem install rake bundler compass --no-ri --no-rdoc
 
 # Install MongoDB Server (it will not run, but executable will be there)
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-RUN apt-get update
-RUN apt-get install -y mongodb-org
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
+    && echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list \
+    && apt-get update \
+    && apt-get install -y mongodb-org-server
 
 
 # Add Reactive Core CA
 RUN curl https://www.reactivecore.de/files/reactivecore.ca.crt > /usr/local/share/ca-certificates/reactivecore.ca.crt && update-ca-certificates
 
 # Install PhantomJS (See: https://gist.github.com/julionc/7476620) 
-RUN apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev
-ENV PHANTOM_JS="phantomjs-1.9.7-linux-x86_64"
-RUN wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
-RUN mv $PHANTOM_JS.tar.bz2 /usr/local/share/; cd /usr/local/share/; tar xvjf $PHANTOM_JS.tar.bz2
-RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs
-RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
+ENV PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
+RUN apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev \
+    && wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 \
+    && mv $PHANTOM_JS.tar.bz2 /usr/local/share/; cd /usr/local/share/; tar xvjf $PHANTOM_JS.tar.bz2 \
+    && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs \
+    && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
 
 # Install the magic wrapper.
 ADD wrapdocker /usr/local/bin/wrapdocker
