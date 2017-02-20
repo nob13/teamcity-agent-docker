@@ -77,6 +77,9 @@ RUN apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype
     && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs \
     && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
 
+# Install Extra Tools(CMAKE, make, etc.)
+RUN apt-get install -y cmake build-essential
+
 # Install the magic wrapper.
 ADD wrapdocker /usr/local/bin/wrapdocker
 
