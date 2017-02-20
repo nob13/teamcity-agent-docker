@@ -53,11 +53,12 @@ RUN apt-add-repository ppa:chris-lea/node.js \
 	psmisc \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install httpie (with SNI), awscli, docker-compose
-RUN pip install --upgrade pyopenssl pyasn1 ndg-httpsclient httpie awscli docker-compose==1.5.1
-RUN ruby-switch --set ruby2.1
-RUN npm install -g bower grunt-cli
-RUN gem install rake bundler compass --no-ri --no-rdoc
+# Somehow broken, we don't need it
+# # Install httpie (with SNI), awscli, docker-compose
+# RUN pip install --upgrade pyopenssl pyasn1 ndg-httpsclient httpie awscli docker-compose==1.5.1
+# RUN ruby-switch --set ruby2.1
+# RUN npm install -g bower grunt-cli
+# RUN gem install rake bundler compass --no-ri --no-rdoc
 
 # Install MongoDB Server (it will not run, but executable will be there)
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
